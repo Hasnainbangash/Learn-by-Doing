@@ -12,6 +12,9 @@ struct CardView: View {
     
     var card: Card
     
+    @State private var fadeIn: Bool = false
+    @State private var moveDownward: Bool = false
+    
     // Used for the sample data
     // var gradient : [Color] = [Color("Color01"), Color("Color02")]
     
@@ -20,6 +23,7 @@ struct CardView: View {
     var body: some View {
         ZStack {
             Image(card.imageName)
+                .opacity(fadeIn ? 1.0 : 0.0)
             
             VStack {
                 Text(card.title)
@@ -32,7 +36,7 @@ struct CardView: View {
                     .foregroundColor(Color.white)
                     .italic()
             } //: VSTACK
-            .offset(y: -218)
+            .offset(y: moveDownward ? -218 : -300)
             
             Button(action: {
                 print("Button was tapped.")
@@ -61,10 +65,18 @@ struct CardView: View {
         .background(LinearGradient(gradient: Gradient(colors: card.gradientColors), startPoint: .top, endPoint: .bottom))
         .cornerRadius(16)
         .shadow(radius: 8)
+        .onAppear {
+            withAnimation(.linear(duration: 1.2)) {
+                self.fadeIn.toggle()
+            }
+            withAnimation(.linear(duration: 0.8)) {
+                self.moveDownward.toggle()
+            }
+        }
     }
 }
 
 #Preview {
-    CardView(card: cardData[0])
+    CardView(card: cardData[1])
         .previewLayout(.sizeThatFits)
 }
