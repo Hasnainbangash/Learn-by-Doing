@@ -16,8 +16,21 @@ struct CardView: View {
     
     var body: some View {
         ZStack {
-            Text("Card")
-        }
+            Image("developer-no1")
+            
+            VStack {
+                Text("SwiftUI")
+                    .font(.largeTitle)
+                    .fontWeight(.heavy)
+                    .foregroundColor(Color.white)
+                    .multilineTextAlignment(.center)
+                Text("Better apps. Less code.")
+                    .fontWeight(.light)
+                    .foregroundColor(Color.white)
+                    .italic()
+            } //: VSTACK
+            .offset(y: -218)
+        } //: ZSTACK
         .frame(width: 335, height: 545)
         .background(LinearGradient(gradient: Gradient(colors: gradient), startPoint: .top, endPoint: .bottom))
         .cornerRadius(16)
