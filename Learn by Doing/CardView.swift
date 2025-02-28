@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct CardView: View {
+    // MARK: - PROPERTIES
+    
+    var gradient : [Color] = [Color("Color01"), Color("Color02")]
     
     // MARK: - CARD
     
@@ -16,7 +19,7 @@ struct CardView: View {
             Text("Card")
         }
         .frame(width: 335, height: 545)
-        .background(Color.pink)
+        .background(LinearGradient(gradient: Gradient(colors: gradient), startPoint: .top, endPoint: .bottom))
         .cornerRadius(16)
         .shadow(radius: 8)
     }
@@ -24,4 +27,5 @@ struct CardView: View {
 
 #Preview {
     CardView()
+        .previewLayout(.sizeThatFits)
 }
