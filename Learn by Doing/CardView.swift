@@ -14,6 +14,7 @@ struct CardView: View {
     
     @State private var fadeIn: Bool = false
     @State private var moveDownward: Bool = false
+    @State private var moveUpward: Bool = false
     
     // Used for the sample data
     // var gradient : [Color] = [Color("Color01"), Color("Color02")]
@@ -59,7 +60,7 @@ struct CardView: View {
                 .clipShape(Capsule())
                 .shadow(color: Color("ColorShadow"), radius: 6, x: 0, y: 3)
             } //: BUTTON
-            .offset(y: 210)
+            .offset(y: moveUpward ? 210 : 300)
         } //: ZSTACK
         .frame(width: 335, height: 545)
         .background(LinearGradient(gradient: Gradient(colors: card.gradientColors), startPoint: .top, endPoint: .bottom))
@@ -71,6 +72,7 @@ struct CardView: View {
             }
             withAnimation(.linear(duration: 0.8)) {
                 self.moveDownward.toggle()
+                self.moveUpward.toggle()
             }
         }
     }
