@@ -30,6 +30,27 @@ struct CardView: View {
                     .italic()
             } //: VSTACK
             .offset(y: -218)
+            
+            Button(action: {
+                print("Button was tapped.")
+            }) {
+                HStack {
+                    Text("Learn".uppercased())
+                        .fontWeight(.heavy)
+                        .foregroundColor(Color.white)
+                        .accentColor(Color.white)
+                    
+                    Image(systemName: "arrow.right.circle")
+                        .font(Font.title.weight(.medium))
+                        .accentColor(Color.white)
+                } //: HSTACK
+                .padding(.vertical)
+                .padding(.horizontal, 24)
+                .background(LinearGradient(gradient: Gradient(colors: gradient), startPoint: .leading, endPoint: .trailing))
+                .clipShape(Capsule())
+                .shadow(color: Color("ColorShadow"), radius: 6, x: 0, y: 3)
+            } //: BUTTON
+            .offset(y: 210)
         } //: ZSTACK
         .frame(width: 335, height: 545)
         .background(LinearGradient(gradient: Gradient(colors: gradient), startPoint: .top, endPoint: .bottom))
