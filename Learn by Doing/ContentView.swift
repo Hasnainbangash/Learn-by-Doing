@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    // MARK: - PROPERTIES
     
     // MARK: - CONTENT
     
@@ -15,7 +16,8 @@ struct ContentView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .center, spacing: 20) {
                 ForEach(0 ..< 6) { item in
-                    CardView()
+                    // CardView()
+                    Text("Card")
                 }
             } //: HSTACK
             .padding(20)
